@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/Aj7Ay/Zomato-Clone.git'
+                git branch: 'main', url: 'https://github.com/etaoko333/Bike-App-Store.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -62,12 +62,12 @@ pipeline{
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image ssholly333/bike-app-store:latest > trivy.txt"
+                sh "trivy image sholly333/bike-app-store:latest > trivy.txt"
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name bike-app-store -p 3000:3000 ssholly333/bike-app-store:latest'
+                sh 'docker run -d --name bike-app-store -p 3000:3000 sholly333/bike-app-store:latest'
             }
         }
     }
