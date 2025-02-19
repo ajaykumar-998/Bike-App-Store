@@ -33,9 +33,9 @@ pipeline{
                 }
             }
         }
-        stage('OWASP FS SCAN') {
-           steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'dependendy-Check'
+        stage("OWASP Dependency Checking"){
+            steps{
+                dependencyCheck additionalArguments: '--scan ./ --format XML ', odcInstallation: 'dependency-check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
@@ -67,35 +67,4 @@ pipeline{
         }
     }
 }
-   post {
-        always {
-            script {
-                def jobName = env.JOB_NAME
-                def buildNumber = env.BUILD_NUMBER
-                def pipelineStatus = currentBuild.result ?: 'UNKNOWN'
-                def bannerColor = pipelineStatus.toUpperCase() == 'SUCCESS' ? 'green' : 'red'
-
-                def body = """
-                <body>
-                    <div style="border: 2px solid ${bannerColor}; padding: 10px;">
-                        <h3 style="color: ${bannerColor};">
-                            Pipeline Status: ${pipelineStatus.toUpperCase()}
-                        </h3>
-                        <p>Job: ${jobName}</p>
-                        <p>Build Number: ${buildNumber}</p>
-                        <p>Status: ${pipelineStatus.toUpperCase()}</p>
-                    </div>
-                </body>
-                """
-
-                emailext(
-                    subject: "${jobName} - Build ${buildNumber} - ${pipelineStatus.toUpperCase()}",
-                    body: body,
-                    to: 'alongemiracle333@gmail.com',
-                    from: 'jenkins@example.com',
-                    replyTo: 'jenkins@example.com',
-                    mimeType: 'text/html'
-                )
-            }
-        }
-    } // Closing post
+  
