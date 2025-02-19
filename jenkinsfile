@@ -62,7 +62,7 @@ pipeline{
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name bike-app-store -p 3000:3000 sholly333/bike-app-store:latest'
+                sh 'docker run -d --name bike-app-store -p 8080:80 sholly333/bike-app-store:latest'
             }
         }
     }
