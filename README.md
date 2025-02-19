@@ -16,13 +16,13 @@ In modern web development, automating deployment and ensuring your code quality 
 - By the end of this post, you’ll have an end-to-end CI/CD pipeline that:
 
 ****Builds and tests your website.
-Runs static analysis via SonarQube.
-Deploys the website to a Docker container.
-Why Use Docker, Jenkins, and SonarQube?
-Docker ensures your application runs consistently across different environments (local, staging, production).
-Jenkins automates the entire CI/CD pipeline — from code push to deployment.
-SonarQube helps you continuously analyze and measure code quality and technical debt, providing insights into potential issues like bugs, vulnerabilities, and code smells.
-Together, they create a powerful, automated, and scalable deployment pipeline.****
+- Runs static analysis via SonarQube.
+- Deploys the website to a Docker container.
+- Why Use Docker, Jenkins, and SonarQube?
+- Docker ensures your application runs consistently across different environments (local, staging, production).
+- Jenkins automates the entire CI/CD pipeline — from code push to deployment.
+- SonarQube helps you continuously analyze and measure code quality and technical debt, providing insights into potential issues like bugs, vulnerabilities, and code smells.
+- Together, they create a powerful, automated, and scalable deployment pipeline.
 
 **Benefits:**
 - Portability: Docker ensures a consistent environment everywhere.
